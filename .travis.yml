@@ -7,3 +7,15 @@ before_install:
 
 script:
     - docker run -e CI=true ghelanijimmy/learn-docker-k8s npm run test -- --coverage
+    
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "learn-docker-k8s"
+    env: "Learndockerk8s-env"
+    bucket_name: "elasticbeanstalk-us-east-2-360664170697"
+    bucket_path: "learn-docker-k8s"
+    acess_key_id: "$AWS_ACCESS_KEY"
+    ssecret_access_key: "$AWS_SECRET_KEY"
+    on:
+        branch: main
