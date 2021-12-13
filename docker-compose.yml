@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     stdin_open: true
     tty: true
     ports:
@@ -12,19 +12,5 @@ services:
     volumes:
       - /app/node_modules
       - .:/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command:
-      - "npm"
-      - "run"
-      - "test"
     environment:
       - CHOKIDAR_USEPOLLING=true
